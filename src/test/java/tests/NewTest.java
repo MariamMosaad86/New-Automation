@@ -18,7 +18,7 @@ public class NewTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver("FIREFOX");
         wait=new WebDriverWait(driver.get(),Duration.ofSeconds(30));
         driver.browser().navigateToURL("https://automationexercise.com");
         driver.browser().maximizeWindows();
@@ -36,7 +36,7 @@ public class NewTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
-                .fillInEmailSingUpButton("TESTest1233222@gmail.com")
+                .fillInEmailSingUpButton("TESTest1233220@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationForm()
@@ -50,7 +50,7 @@ public class NewTest {
     public void userCanLoginSuccessfully() {
         driver.browser().navigateToURL("https://automationexercise.com/login");
         new LoginSignupPage(driver)
-                .fillInLoginEmail("TESTest1233222@gmail.com")
+                .fillInLoginEmail("TESTest1233220@gmail.com")
                 .fillInLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatLogOutLinkShouldBeDisplayed();
@@ -69,9 +69,9 @@ public class NewTest {
 
     @Test(priority = 3, dependsOnMethods = "userCanRegisterSuccessfully")
     public void userCanDeleteSuccessfully() {
-        driver.browser().navigateToURL("https://automationexercise.com/login");
+       driver.browser().navigateToURL("https://automationexercise.com/login");
         new LoginSignupPage(driver)
-                .fillInLoginEmail("TESTest1233222@gmail.com")
+                .fillInLoginEmail("TESTest1233220@gmail.com")
                 .fillInLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatDeleteLinkShouldBeDisplayed()
