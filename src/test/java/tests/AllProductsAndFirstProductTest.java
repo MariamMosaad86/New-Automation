@@ -25,7 +25,7 @@ public class AllProductsAndFirstProductTest {
                 .clickOnProductsLink()
                 .checkThatProductsPageIsLoadedSuccessfully()
                 .clickOnFirstProduct()
-                .checkThatUseNavigateToFirstProductPageSuccessfully();
+                .checkThatUserNavigateToFirstProductPageSuccessfully();
     }
 
 

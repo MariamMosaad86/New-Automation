@@ -1,8 +1,8 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -32,6 +32,7 @@ public class RegistrationPage {
 
     /*********************************  Assertions  *****************************************************/
 
+    @Step("Check That Registration Page Is Loaded Successfully")
     public RegistrationPage checkThatRegistrationPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.get().getCurrentUrl().contains("/signup"));
         Assert.assertTrue(driver.element().isDisplayed(pageTitle));
@@ -42,6 +43,7 @@ public class RegistrationPage {
 
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check That User Can fill In Registration Form")
     public RegistrationPage fillInRegistrationForm() {
         driver.element().fillField(password, "12345678");
 
@@ -49,11 +51,11 @@ public class RegistrationPage {
 //        Select selectDays = new Select(driver.get().findElement(days));
 //        selectDays.selectByIndex(4);
 
-        driver.element().selectByIndex(months,10);
+        driver.element().selectByIndex(months, 10);
 //        Select selectMonth = new Select(driver.get().findElement(months));
 //        selectMonth.selectByIndex(10);
 
-        driver.element().selectByValue(years,"1986");
+        driver.element().selectByValue(years, "1986");
 //        Select selectYears = new Select(driver.get().findElement(years));
 //        selectYears.selectByValue("1986");
 
@@ -72,7 +74,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationSuccessPage clickOnCreateAccount() {
+    @Step("Check That User Can Click On Create Account Button")
+    public RegistrationSuccessPage clickOnCreateAccountButton() {
         driver.element().click(createAccountButton);
         return new RegistrationSuccessPage(driver);
     }

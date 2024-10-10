@@ -1,8 +1,8 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class FirstProductPage {
@@ -20,7 +20,9 @@ public class FirstProductPage {
     }
 
     /*********************************  Assertions  *****************************************************/
-    public FirstProductPage checkThatUseNavigateToFirstProductPageSuccessfully() {
+
+    @Step("Check That User Navigate To First Product Page Successfully")
+    public FirstProductPage checkThatUserNavigateToFirstProductPageSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/product_details/1"));
         driver.element().isDisplayed(productName);
         driver.element().isDisplayed(category);

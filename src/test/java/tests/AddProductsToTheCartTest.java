@@ -25,13 +25,13 @@ public class AddProductsToTheCartTest {
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnProductsLink()
                 .hoverOnFirstProduct()
-                .clickOnFirstAddToCartButton()
+                .clickOnFirstProductAddToCartButton()
                 .clickOnContinueShoppingButton()
                 .hoverOnSecondProduct()
                 .clickOnSecondProductAddToCartButton()
                 .clickOnViewCartButton()
                 .checkThatViewCartPageIsLoadedSuccessfully()
-                .checkThatFirstAndSecondProductsAreAddedSuccessfully();
+                .checkThatFirstAndSecondProductsAreAddedToTheCartSuccessfully();
 
     }
 

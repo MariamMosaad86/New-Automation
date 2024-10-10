@@ -25,7 +25,7 @@ public class VerifySubscriptionInCartPageTest {
                 .checkSubscriptionIsVisibleInCartPage()
                 .fillEmailField("TestTest333@gmail.com")
                 .clickOnEmailArrowButton()
-                .checkThatSuccessMessageDisplayedSuccessfully();
+                .checkThatSuccessMessageIsSuccessfullyDisplayed();
     }
 
     @AfterClass

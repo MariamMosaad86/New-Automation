@@ -2,6 +2,7 @@ package pages;
 
 import driverFactory.Driver;
 import elementActions.ElementActions;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
@@ -9,7 +10,6 @@ import org.testng.Assert;
 public class ContactUsPage {
     private Driver driver;
     FluentWait fluentWait;
-
 
 
     By contactUsFormTitle = By.xpath("(//h2[@class=\"title text-center\"])[1]");
@@ -33,6 +33,7 @@ public class ContactUsPage {
 
     /*********************************  Assertions  *****************************************************/
 
+    @Step("Check That ContactUs Page Is Loaded Successfully")
     public ContactUsPage checkThatContactUsPageIsLoadedSuccessfully() {
 
 //        fluentWait.until(ExpectedConditions.textToBe(fromTitle,"GET IN TOUCH"));
@@ -43,6 +44,7 @@ public class ContactUsPage {
         return this;
     }
 
+    @Step("Check That Form Should Be Submitted Successfully")
     public ContactUsPage checkThatFormShouldBeSubmittedSuccessfully() {
         Assert.assertEquals(driver.element().getTextOf(successMessage), "Success! Your details have been submitted successfully.");
         return this;
@@ -50,20 +52,23 @@ public class ContactUsPage {
 
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check That User Can fill In ContactUs From")
     public ContactUsPage fillInContactUsFrom(String name, String email, String subject, String message) {
-   driver.element().fillField(nameField,name);
-        driver.element().fillField(emailField,email);
-        driver.element().fillField(subjectField,subject);
-        driver.element().fillField(messageField,message);
+        driver.element().fillField(nameField, name);
+        driver.element().fillField(emailField, email);
+        driver.element().fillField(subjectField, subject);
+        driver.element().fillField(messageField, message);
         return this;
     }
 
+    @Step("Check That User Can Click On Submit Button")
     public ContactUsPage clickOnSubmitButton() {
         driver.element().click(submitButton);
         driver.get().switchTo().alert().accept();
         return this;
     }
 
+    @Step("Check That User Can Click On HomeButton")
     public HomePage clickOnHomeButton() {
         driver.element().click(homeButton);
         return new HomePage(driver);

@@ -1,6 +1,7 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -19,7 +20,7 @@ public class ViewCartPage {
     By secondProductTotalPrice = By.xpath("(//P[@class=\"cart_total_price\"])[2]");
     By subscriptionTitle = By.xpath("//div[@class=\"single-widget\"]/h2");
     By footer = By.id("footer");
-    By emailField=By.id("susbscribe_email");
+    By emailField = By.id("susbscribe_email");
     By submitEmailButton = By.id("subscribe");
     By SuccessMessage = By.id("success-subscribe");
 
@@ -30,13 +31,15 @@ public class ViewCartPage {
 
     /**********************************  Assertions  ****************************************/
 
+    @Step("Check That View Cart Page Is Loaded Successfully")
     public ViewCartPage checkThatViewCartPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/view_cart"));
         Assert.assertTrue(driver.element().isDisplayed(productsTable));
         return this;
     }
 
-    public ViewCartPage checkThatFirstAndSecondProductsAreAddedSuccessfully() {
+    @Step("Check That First And Second Products Are Added To The Cart Successfully")
+    public ViewCartPage checkThatFirstAndSecondProductsAreAddedToTheCartSuccessfully() {
         Assert.assertTrue(driver.element().isDisplayed(firstProductName));
         Assert.assertTrue(driver.element().isDisplayed(secondProductName));
         Assert.assertEquals(driver.element().getTextOf(firstProductName), "Blue Top");
@@ -51,6 +54,7 @@ public class ViewCartPage {
     }
 
 
+    @Step("Check Subscription Is Visible In Cart Page")
     public ViewCartPage checkSubscriptionIsVisibleInCartPage() {
         driver.element().scrollToElement(footer);
         Assert.assertTrue(driver.element().isDisplayed(subscriptionTitle));
@@ -58,23 +62,22 @@ public class ViewCartPage {
         return this;
     }
 
-    public ViewCartPage checkThatSubscriptionIsvIsVisible() {
-        driver.element().scrollToElement(footer);
-        Assert.assertTrue(driver.element().isDisplayed(subscriptionTitle));
-        return this;
-    }
-    public ViewCartPage checkThatSuccessMessageDisplayedSuccessfully() {
+
+    @Step("Check That Success Message Is Successfully Displayed")
+    public ViewCartPage checkThatSuccessMessageIsSuccessfullyDisplayed() {
         Assert.assertEquals(driver.element().getTextOf(SuccessMessage), "You have been successfully subscribed!");
         return this;
     }
 
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check That User Can Fill Email Field")
     public ViewCartPage fillEmailField(String email) {
         driver.element().fillField(emailField, email);
         return this;
     }
 
+    @Step("Check That User Can Click On Email Arrow Button")
     public ViewCartPage clickOnEmailArrowButton() {
         driver.element().click(submitEmailButton);
         return this;

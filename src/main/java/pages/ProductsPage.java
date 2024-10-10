@@ -1,10 +1,9 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-
-import java.time.Duration;
 
 public class ProductsPage {
     private Driver driver;
@@ -23,22 +22,21 @@ public class ProductsPage {
     By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
 
 
-
-
-
     public ProductsPage(Driver driver) {
         this.driver = driver;
     }
 
     /*********************************  Assertions  *****************************************************/
+
+    @Step("Check That Products Page Is Loaded Successfully")
     public ProductsPage checkThatProductsPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/products"));
         Assert.assertTrue(driver.element().isDisplayed(productsTitle));
         Assert.assertEquals(driver.element().getTextOf(productsTitle), "ALL PRODUCTS");
-
         return this;
     }
 
+    @Step("Check That Searched Product Is Loaded Successfully")
     public ProductsPage checkThatSearchedProductIsLoadedSuccessfully() {
         Assert.assertTrue(driver.element().isDisplayed(searchedProductTitle));
         Assert.assertEquals(driver.element().getTextOf(searchedProductTitle), "SEARCHED PRODUCTS");
@@ -48,49 +46,57 @@ public class ProductsPage {
     }
 
 
-
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check That User Can Click On First Product")
     public FirstProductPage clickOnFirstProduct() {
         driver.element().click(firstProductLink);
         return new FirstProductPage(driver);
     }
 
+    @Step("Check That User Can Search For Product")
     public ProductsPage searchForProduct(String X) {
         driver.element().searchBar(productSearchbar, X);
         return this;
     }
 
+    @Step("Check That User Can Click On Search Button")
     public ProductsPage clickOnSearchButton() {
         driver.element().click(productSearchButton);
         return this;
     }
 
+    @Step("Check That User Can Hover On First Product")
     public ProductsPage hoverOnFirstProduct() {
         driver.element().hoverOnItem(hoverOnFirstProductLink);
         return this;
     }
 
+    @Step("Check That User Can Hover On Second Product")
     public ProductsPage hoverOnSecondProduct() {
         driver.element().hoverOnItem(hoverOnSecondProductLink);
         return this;
     }
 
-    public ProductsPage clickOnFirstAddToCartButton() {
+    @Step("Check That User Can Click On First Product Add To Cart Button")
+    public ProductsPage clickOnFirstProductAddToCartButton() {
         driver.element().click(clickOnFirstProductAddToCartButton);
         return this;
     }
 
+    @Step("Check That User Can Click On Continue Shopping Button")
     public ProductsPage clickOnContinueShoppingButton() {
         driver.element().click(continueShoppingButton);
         return this;
     }
 
+    @Step("Check That User Can Click On Second Product Add To Cart Button")
     public ProductsPage clickOnSecondProductAddToCartButton() {
         driver.element().click(clickOnSecondProductAddToCartButton);
         return this;
     }
 
+    @Step("Check That User Can Click On View Cart Button")
     public ViewCartPage clickOnViewCartButton() {
         driver.element().click(viewCart);
         return new ViewCartPage(driver);

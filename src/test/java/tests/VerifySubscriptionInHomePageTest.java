@@ -20,7 +20,7 @@ public class VerifySubscriptionInHomePageTest {
     public void checkThatUserCanSubscribeFromHomePage(){
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
-                .checkThatSubscriptionIsvIsVisible()
+                .checkThatSubscriptionIsVisible()
                 .fillEmailField("TestTest333@gmail.com")
                 .clickOnArrowButton()
                 .checkThatSuccessMessageDisplayedSuccessfully();

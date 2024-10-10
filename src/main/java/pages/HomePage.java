@@ -1,6 +1,7 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -31,32 +32,38 @@ public class HomePage {
 
     /*********************************  Assertions  *****************************************************/
 
+    @Step("Check That LogOut Link Should Be Displayed")
     public HomePage checkThatLogOutLinkShouldBeDisplayed() {
         Assert.assertTrue(driver.element().isDisplayed(logoutLink));
         return this;
     }
 
+    @Step("Check That Delete Link Should Be Displayed")
     public HomePage checkThatDeleteLinkShouldBeDisplayed() {
         Assert.assertTrue(driver.element().isDisplayed(deleteAccountLink));
         return this;
     }
 
+    @Step("check That Login Link Should Be Displayed")
     public HomePage checkThatLoginLinkShouldBeDisplayed() {
         Assert.assertTrue(driver.element().isDisplayed(loginLink));
         return this;
     }
 
+    @Step("Check That Home Page Is Loaded Successfully")
     public HomePage checkThatHomePageIsLoadedSuccessfully() {
         Assert.assertEquals(driver.browser().getCurrentURL(), "https://automationexercise.com/");
         return this;
     }
 
-    public HomePage checkThatSubscriptionIsvIsVisible() {
+    @Step("Check That Subscription Is Visible")
+    public HomePage checkThatSubscriptionIsVisible() {
         driver.element().scrollToElement(footer);
         Assert.assertTrue(driver.element().isDisplayed(subscriptionTitle));
         return this;
     }
 
+    @Step("Check That Success Message Displayed Successfully")
     public HomePage checkThatSuccessMessageDisplayedSuccessfully() {
         Assert.assertEquals(driver.element().getTextOf(SuccessMessage), "You have been successfully subscribed!");
         return this;
@@ -64,62 +71,73 @@ public class HomePage {
 
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check That User Can Click On Login Link")
     public LoginSignupPage clickOnLoginLink() {
         driver.element().click(loginLink);
         return new LoginSignupPage(driver);
     }
 
+    @Step("Check That User Can Click On LogOut Link")
     public LoginSignupPage clickOnLogOutLink() {
         driver.element().click(logoutLink);
         return new LoginSignupPage(driver);
     }
 
+    @Step("Check That User Can Click On Delete Account Link")
     public AccountSuccessfulDeletion clickOnDeleteAccountLink() {
         driver.element().click(deleteAccountLink);
         return new AccountSuccessfulDeletion(driver);
     }
 
+    @Step("Check That User Can Click On ContactUs Link")
     public ContactUsPage clickOnContactUsLink() {
         driver.element().click(contactUsLink);
         return new ContactUsPage(driver);
     }
 
+    @Step("Check That User Can Click On TestCase Link")
     public TestCasePage clickOnTestCaseLink() {
         driver.element().click(testCaseLink);
         return new TestCasePage(driver);
     }
 
+    @Step("Check That User Can Click On Products Link")
     public ProductsPage clickOnProductsLink() {
         driver.element().click(productsLink);
         return new ProductsPage(driver);
     }
 
-
-    public HomePage hoverOnFirstProduct(){
+    @Step("Check That User Can hover On First Product")
+    public HomePage hoverOnFirstProduct() {
         driver.element().hoverOnItem(hoverOnFirstProductLink);
         return this;
     }
 
+    @Step("Check That User Can Click On First Add To Cart Button")
     public HomePage clickOnFirstAddToCartButton() {
         driver.element().click(clickOnFirstProductAddToCartButton);
         return this;
     }
 
+    @Step("Check That User Can Click On View Cart Button")
     public ViewCartPage clickOnViewCartButton() {
         driver.element().click(viewCart);
         return new ViewCartPage(driver);
     }
 
+    @Step("Check That User Can fill Email Field")
     public HomePage fillEmailField(String email) {
         driver.element().fillField(emailField, email);
         return this;
     }
 
+    @Step("Check That User Can Click On Arrow Button")
     public HomePage clickOnArrowButton() {
         driver.element().click(submitEmailButton);
         return this;
     }
 
+    @Step("Check That User Can Click On Cart Link")
     public ViewCartPage clickOnCartLink() {
         driver.element().click(cartLink);
         return new ViewCartPage(driver);

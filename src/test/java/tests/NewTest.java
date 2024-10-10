@@ -18,7 +18,7 @@ public class NewTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("FIREFOX");
+        driver = new Driver("CHROME");
         wait=new WebDriverWait(driver.get(),Duration.ofSeconds(30));
         driver.browser().navigateToURL("https://automationexercise.com");
         driver.browser().maximizeWindows();
@@ -34,13 +34,13 @@ public class NewTest {
                 .checkThatHomePageIsLoadedSuccessfully()
                 .checkThatLoginLinkShouldBeDisplayed()
                 .clickOnLoginLink()
-                .checkThatUserIsNavigateToLoginSignUpPage()
+                .checkThatUserIsNavigatedToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
-                .fillInEmailSingUpButton("TESTest1233220@gmail.com")
+                .fillInEmailSingUpPage("TESTest1233220@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationForm()
-                .clickOnCreateAccount()
+                .clickOnCreateAccountButton()
                 .checkThatSuccessMessageShouldBeDisplayed();
 
         driver.browser().deleteAllCookies();
