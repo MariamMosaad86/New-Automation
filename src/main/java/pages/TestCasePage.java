@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class TestCasePage {
-    private Driver driver;
+    public Driver driver;
 
     By testCaseTitle = By.xpath("//h2[@class=\"title text-center\"]/b");
 
