@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class SearchForProducts {
+public class SearchForProductsTest {
     public Driver driver;
 
     @BeforeClass
@@ -24,6 +24,7 @@ public class SearchForProducts {
                 .searchForProduct("Blue Top")
                 .clickOnSearchButton()
                 .checkThatSearchedProductIsLoadedSuccessfully();
+
     }
 
 

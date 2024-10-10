@@ -3,18 +3,13 @@ package pages;
 import driverFactory.Driver;
 import elementActions.ElementActions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
-
-import java.time.Duration;
 
 public class ContactUsPage {
     private Driver driver;
     FluentWait fluentWait;
-    ElementActions element;
+
 
 
     By contactUsFormTitle = By.xpath("(//h2[@class=\"title text-center\"])[1]");

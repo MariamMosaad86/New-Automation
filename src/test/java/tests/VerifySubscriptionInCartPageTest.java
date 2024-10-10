@@ -7,8 +7,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 
 
-public class AllProductsAndFirstProductTest {
-
+public class VerifySubscriptionInCartPageTest {
     public Driver driver;
 
     @BeforeClass
@@ -16,23 +15,22 @@ public class AllProductsAndFirstProductTest {
         driver = new Driver("CHROME");
         driver.browser().navigateToURL("https://automationexercise.com/");
         driver.browser().maximizeWindows();
-
     }
 
     @Test
-    public void checkThatUserCanNavigateToFirstProductPageSuccessfully() {
+    public void checkThatUserCanSubscribeFromHomePage(){
         new HomePage(driver)
-                .clickOnProductsLink()
-                .checkThatProductsPageIsLoadedSuccessfully()
-                .clickOnFirstProduct()
-                .checkThatUseNavigateToFirstProductPageSuccessfully();
+                .checkThatHomePageIsLoadedSuccessfully()
+                .clickOnCartLink()
+                .checkSubscriptionIsVisibleInCartPage()
+                .fillEmailField("TestTest333@gmail.com")
+                .clickOnEmailArrowButton()
+                .checkThatSuccessMessageDisplayedSuccessfully();
     }
-
 
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();
         driver.quit();
     }
-
 }

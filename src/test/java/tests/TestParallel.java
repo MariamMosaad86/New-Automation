@@ -1,7 +1,6 @@
 package tests;
 
 import driverFactory.Driver;
-import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import pages.HomePage;
 import utilities.ScreenShotManager;

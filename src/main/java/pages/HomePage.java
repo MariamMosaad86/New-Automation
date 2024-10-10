@@ -15,9 +15,15 @@ public class HomePage {
     By contactUsLink = By.xpath("//a[@href=\"/contact_us\"]");
     By testCaseLink = By.xpath("(//a[@href=\"/test_cases\"])[1]");
     By productsLink = By.xpath("//a[@href=\"/products\"]");
-    By hoverLink=By.xpath("(//div[@class=\"overlay-content\"])[1]");
-    By clickAddToCartButton =By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
-    By viewCart=By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By hoverOnFirstProductLink = By.xpath("(//div[@class=\"overlay-content\"])[1]");
+    By clickOnFirstProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
+    By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By subscriptionTitle = By.xpath("//div[@class=\"single-widget\"]/h2");
+    By emailField = By.id("susbscribe_email");
+    By submitEmailButton = By.id("subscribe");
+    By SuccessMessage = By.id("success-subscribe");
+    By footer = By.id("footer");
+    By cartLink = By.xpath("(//a[@href=\"/view_cart\"])[1]");
 
     public HomePage(Driver driver) {
         this.driver = driver;
@@ -42,6 +48,17 @@ public class HomePage {
 
     public HomePage checkThatHomePageIsLoadedSuccessfully() {
         Assert.assertEquals(driver.browser().getCurrentURL(), "https://automationexercise.com/");
+        return this;
+    }
+
+    public HomePage checkThatSubscriptionIsvIsVisible() {
+        driver.element().scrollToElement(footer);
+        Assert.assertTrue(driver.element().isDisplayed(subscriptionTitle));
+        return this;
+    }
+
+    public HomePage checkThatSuccessMessageDisplayedSuccessfully() {
+        Assert.assertEquals(driver.element().getTextOf(SuccessMessage), "You have been successfully subscribed!");
         return this;
     }
 
@@ -77,20 +94,34 @@ public class HomePage {
         return new ProductsPage(driver);
     }
 
-    public HomePage hoverOnFirstItem(){
-        driver.element().hoverOnItem(hoverLink);
+
+    public HomePage hoverOnFirstProduct(){
+        driver.element().hoverOnItem(hoverOnFirstProductLink);
         return this;
     }
 
-    public HomePage clickOnFirstAddToCartButton(){
-        driver.element().click(clickAddToCartButton);
+    public HomePage clickOnFirstAddToCartButton() {
+        driver.element().click(clickOnFirstProductAddToCartButton);
         return this;
     }
 
-    public ViewCartPage clickOnViewCartButton(){
+    public ViewCartPage clickOnViewCartButton() {
         driver.element().click(viewCart);
         return new ViewCartPage(driver);
     }
 
+    public HomePage fillEmailField(String email) {
+        driver.element().fillField(emailField, email);
+        return this;
+    }
 
+    public HomePage clickOnArrowButton() {
+        driver.element().click(submitEmailButton);
+        return this;
+    }
+
+    public ViewCartPage clickOnCartLink() {
+        driver.element().click(cartLink);
+        return new ViewCartPage(driver);
+    }
 }
