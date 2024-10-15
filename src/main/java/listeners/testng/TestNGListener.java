@@ -7,6 +7,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utilities.ScreenShotManager;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 
 public class TestNGListener implements ITestListener, IExecutionListener {
@@ -21,6 +22,12 @@ public class TestNGListener implements ITestListener, IExecutionListener {
     @Override
     public void onExecutionFinish() {
         System.out.println("Generating Report.........");
+
+        try {
+            Runtime.getRuntime().exec("reportGeneration.bat");
+        } catch (IOException e) {
+            System.out.println("Unable to Generate Allure Report, may be there's an issue in the batch file/commands");
+        }
         System.out.println("****************** End of Execution ***************************");
 
     }
@@ -71,13 +78,8 @@ public class TestNGListener implements ITestListener, IExecutionListener {
 //        }
         assert driver != null;
         ScreenShotManager.CaptureScreenShot(driver.get(), result.getName());
-
-
-//        ScreenShotManager.CaptureScreenShot(Driver.get(), result.getName());
         System.out.println("*********** failure of Test: " + result.getName() + " *************");
 
-
     }
-
 
 }
