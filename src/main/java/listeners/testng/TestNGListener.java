@@ -2,19 +2,23 @@ package listeners.testng;
 
 import driverFactory.Driver;
 import org.openqa.selenium.WebDriver;
+import org.testng.IAlterSuiteListener;
 import org.testng.IExecutionListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.xml.XmlSuite;
 import utilities.AllureReportHelper;
 import utilities.ScreenShotManager;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Properties;
 
 import static utilities.properties.PropertiesManager.ReportConfig;
 import static utilities.properties.PropertiesManager.initializeProperties;
 
-public class TestNGListener implements ITestListener, IExecutionListener {
+public class TestNGListener implements ITestListener, IExecutionListener, IAlterSuiteListener {
 
 
     @Override
@@ -91,5 +95,11 @@ public class TestNGListener implements ITestListener, IExecutionListener {
         System.out.println("*********** failure of Test: " + result.getName() + " *************");
 
     }
+
+
+    
+
+
+
 
 }

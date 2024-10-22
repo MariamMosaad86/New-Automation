@@ -8,16 +8,16 @@ import utilities.ScreenShotManager;
 import java.time.Duration;
 
 public class ContactUsTest {
-    public Driver driver;
-//   public ThreadLocal<Driver> driver;
+    //    public Driver driver;
+    public ThreadLocal<Driver> driver;
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void SetUp(@Optional("CHROME") String browserName) {
-//        driver = new ThreadLocal<>();
-//        driver.set(new Driver(browserName));
-        driver = new Driver();
-        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+        driver = new ThreadLocal<>();
+        driver.set(new Driver(browserName));
+//        driver = new Driver(browserName);
+        driver.get().get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
 //        driver.element().hoverOnItem(By.xpath("(//div[@class=\"overlay-content\"])[1]"))
 //                .click(By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]"));
@@ -25,7 +25,7 @@ public class ContactUsTest {
 
     @Test(priority = 1)
     public void contactUsTest() {
-        new HomePage(driver)
+        new HomePage(driver.get())
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnContactUsLink()
                 .checkThatContactUsPageIsLoadedSuccessfully()
@@ -34,23 +34,15 @@ public class ContactUsTest {
                 .checkThatFormShouldBeSubmittedSuccessfully()
                 .clickOnHomeButton()
                 .checkThatHomePageIsLoadedSuccessfully();
-        ScreenShotManager.CaptureScreenShot(driver.get(), "ContactUs");
+        ScreenShotManager.CaptureScreenShot(driver.get().get(), "ContactUs");
 
 
     }
 
-//    @AfterMethod
-//    public void screenShotOnFailure(ITestResult result) {
-//        if (result.getStatus() == ITestResult.FAILURE) {
-//            System.out.println("Test Failed");
-//            System.out.println("Taking screen shot.....");
-//            ScreenShotManager.CaptureScreenShot(driver.get(), result.getName());
-//        }
-//    }
 
     @AfterClass
     public void tearDown() {
-        driver.browser().deleteAllCookies();
-        driver.quit();
+        driver.get().browser().deleteAllCookies();
+        driver.get().quit();
     }
 }
