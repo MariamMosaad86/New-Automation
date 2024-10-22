@@ -14,7 +14,7 @@ public class TestCaseTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver();
         driver.browser().navigateToURL("https://automationexercise.com/");
         driver.browser().maximizeWindows();
     }

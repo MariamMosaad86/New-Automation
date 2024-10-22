@@ -15,7 +15,7 @@ public class TestParallel {
     @Parameters(value = {"browserName"})
     public void SetUp(@Optional("CHROME") String browserName) {
   driver = new ThreadLocal<>();
-    driver.set(new Driver(browserName));
+    driver.set(new Driver());
 //        driver = new Driver(browserName);
         driver.get().browser().maximizeWindows();
         driver.get().browser().navigateToURL("https://automationexercise.com/");

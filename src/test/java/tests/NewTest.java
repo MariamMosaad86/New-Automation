@@ -18,7 +18,7 @@ public class NewTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver();
         wait=new WebDriverWait(driver.get(),Duration.ofSeconds(30));
         driver.browser().navigateToURL("https://automationexercise.com");
         driver.browser().maximizeWindows();

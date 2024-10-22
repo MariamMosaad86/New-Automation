@@ -13,7 +13,7 @@ public class AddProductsToTheCartTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver();
         driver.browser().navigateToURL("https://automationexercise.com/");
         driver.browser().maximizeWindows();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

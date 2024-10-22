@@ -11,7 +11,7 @@ public class VerifySubscriptionInHomePageTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver();
         driver.browser().maximizeWindows();
         driver.browser().navigateToURL("https://automationexercise.com");
     }

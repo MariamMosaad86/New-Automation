@@ -16,9 +16,7 @@ public class ContactUsTest {
     public void SetUp(@Optional("CHROME") String browserName) {
 //        driver = new ThreadLocal<>();
 //        driver.set(new Driver(browserName));
-        driver = new Driver(browserName);
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com/");
+        driver = new Driver();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
 //        driver.element().hoverOnItem(By.xpath("(//div[@class=\"overlay-content\"])[1]"))
